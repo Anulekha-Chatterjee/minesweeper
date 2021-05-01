@@ -1,0 +1,17 @@
+#board{
+    height: 330px;
+    width: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: gray;
+    border-spacing: 0;
+}
+
+#board TR TD{
+    height: 40px;
+    width: 40px;
+    padding: 0; 
+    margin: 0;
+    border:1px solid white;
+    text-align: center;
+}
