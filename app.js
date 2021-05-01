@@ -34,6 +34,22 @@ window.onload = function () {
         {
             alert('You lost')
         }
+        else
+        {
+            var clickedRow = block.parentNode.rowIndex;
+            var clickedColumn = block.cellIndex;
+
+            block.innerHTML= // the value of the cell is the sum of mines in the eight neighboring tiles:
+            ((board.rows[clickedRow].cells[clickedColumn+1].innerHTML==='X')|0)        // down
+           +((board.rows[clickedRow-1].cells[clickedColumn+1].innerHTML==='X')|0)        // down & left
+           +((board.rows[clickedRow+1].cells[clickedColumn+1].innerHTML==='X')|0)        // down & right
+           +((board.rows[clickedRow].cells[clickedColumn-1].innerHTML==='X')|0)        // up
+           +((board.rows[clickedRow-1].cells[clickedColumn-1].innerHTML==='X')|0)        // up & left
+           +((board.rows[clickedRow+1].cells[clickedColumn-1].innerHTML==='X')|0)        // up & right
+           +((board.rows[clickedRow-1].cells[clickedColumn+1].innerHTML==='X')|0)        // left
+           +((board.rows[clickedRow+1].cells[clickedColumn+1].innerHTML==='X')|0);        // right.
+            
+        }
     }
 
     function getRandomRowOrColumn() {
