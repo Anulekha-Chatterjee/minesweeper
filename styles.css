@@ -15,3 +15,12 @@
     border:1px solid white;
     text-align: center;
 }
+
+#board TR TD.clicked {
+    background: #333333;
+}
+
+#board TR TD.bombed {
+    background: red;
+}
+
