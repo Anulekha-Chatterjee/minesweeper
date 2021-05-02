@@ -8,8 +8,7 @@ window.onload = function () {
     let score = 0;
 
     resetBtn.addEventListener('click', reset);
-    function reset()
-    {
+    function reset() {
         init();
         displayScore();
     }
@@ -41,6 +40,11 @@ window.onload = function () {
 
 
     function clickBlock(block) {
+
+        if (gameOver) {
+            return;
+        }
+
         if (block.getAttribute("class") === "hasBomb") {
             gameOver = true;
             showAllBombs();
@@ -72,16 +76,8 @@ window.onload = function () {
             }
         }
         displayScore();
-        declareWin();
     }
 
-function declareWin()
-{
-    if(score === ((noOfRows*noOfColumns)-noOfBombs))
-    {
-        alert("You've won the game");
-    }
-}
 
     function showAllBombs() {
         if (gameOver) {
@@ -97,10 +93,10 @@ function declareWin()
 
     }
 
-    function displayScore()
-    {
+    function displayScore() {
         document.getElementById('score').innerHTML = "Score: " + score;
     }
+
 
     function getRandomRowOrColumn() {
         return Math.floor(Math.random() * 8);
