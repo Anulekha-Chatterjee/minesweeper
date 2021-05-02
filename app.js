@@ -9,6 +9,7 @@ window.onload = function () {
 
     resetBtn.addEventListener('click', reset);
     function reset() {
+        gameOver = false;
         init();
         displayScore();
     }
