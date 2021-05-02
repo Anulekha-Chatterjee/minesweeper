@@ -18,7 +18,7 @@ window.onload = function () {
         }
         plantBombs();
     }
-
+    displayScore();
     init();
 
     function plantBombs() {
@@ -32,7 +32,7 @@ window.onload = function () {
 
 
     function clickBlock(block) {
-        if (block.getAttribute("class")==="hasBomb") {
+        if (block.getAttribute("class") === "hasBomb") {
             gameOver = true;
             showAllBombs();
             alert('You lost');
@@ -40,47 +40,47 @@ window.onload = function () {
         else {
             block.setAttribute('class', 'clicked');
             score = score + 1;
-            console.log (score)
             var clickedRow = block.parentNode.rowIndex;
             var clickedColumn = block.cellIndex;
             var bombs = 0;
-            for (var i=Math.max(clickedRow-1,0); i<=Math.min(clickedRow+1,noOfRows-1); i++) {
-                for(var j=Math.max(clickedColumn-1,0); j<=Math.min(clickedColumn+1,noOfColumns-1); j++) {
-                  if (board.rows[i].cells[j].getAttribute("class")==="hasBomb") bombs++;
+            for (var i = Math.max(clickedRow - 1, 0); i <= Math.min(clickedRow + 1, noOfRows - 1); i++) {
+                for (var j = Math.max(clickedColumn - 1, 0); j <= Math.min(clickedColumn + 1, noOfColumns - 1); j++) {
+                    if (board.rows[i].cells[j].getAttribute("class") === "hasBomb") {
+                        bombs = bombs + 1;
+                    };
                 }
-              }
-              block.innerHTML = bombs;
-                if(bombs === 0)
-                {
-                    for (var i=Math.max(clickedRow-1,0); i<=Math.min(clickedRow+1,noOfRows-1); i++) {
-                        for(var j=Math.max(clickedColumn-1,0); j<=Math.min(clickedColumn+1,noOfColumns-1); j++) {
-                          if (board.rows[i].cells[j].innerHTML=="") 
-                          {
-                              clickBlock(board.rows[i].cells[j]);
+            }
+            block.innerHTML = bombs;
+            if (bombs === 0) {
+                for (var i = Math.max(clickedRow - 1, 0); i <= Math.min(clickedRow + 1, noOfRows - 1); i++) {
+                    for (var j = Math.max(clickedColumn - 1, 0); j <= Math.min(clickedColumn + 1, noOfColumns - 1); j++) {
+                        if (board.rows[i].cells[j].innerHTML == "") {
+                            clickBlock(board.rows[i].cells[j]);
                         }
-                      }
-        }
+                    }
+                }
 
-       }
-   }
-}
-function showAllBombs()
-{
-    if(gameOver)
-    {
-        for(let i = 0; i<noOfRows; i++)
-        {
-            for(j =0; j<noOfRows; j++)
-            {
-                if(board.rows[i].cells[j].getAttribute("class")==="hasBomb")
-                {
-                    board.rows[i].cells[j].setAttribute('class','bombed')
-                    board.rows[i].cells[j].innerHTML = "*";
+            }
+        }
+        displayScore();
+    }
+    function showAllBombs() {
+        if (gameOver) {
+            for (let i = 0; i < noOfRows; i++) {
+                for (j = 0; j < noOfRows; j++) {
+                    if (board.rows[i].cells[j].getAttribute("class") === "hasBomb") {
+                        board.rows[i].cells[j].setAttribute('class', 'bombed')
+                        board.rows[i].cells[j].innerHTML = "💣";
+                    }
                 }
             }
         }
     }
-}
+
+    function displayScore()
+    {
+        document.getElementById('score').innerHTML = "Score: " + score;
+    }
 
     function getRandomRowOrColumn() {
         return Math.floor(Math.random() * 8);

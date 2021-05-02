@@ -1,26 +1,41 @@
+#content{
+    display: block;
+    text-align: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 23%;
+}
+
 #board{
-    height: 330px;
-    width: 320px;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: gray;
-    border-spacing: 0;
+height: 330px;
+width: 320px;
+display: flex;
+flex-wrap: wrap;
+background-color: gray;
+border-spacing: 0;
 }
 
 #board TR TD{
-    height: 40px;
-    width: 40px;
-    padding: 0; 
-    margin: 0;
-    border:1px solid white;
-    text-align: center;
+height: 40px;
+width: 40px;
+padding: 0; 
+margin: 0;
+border:1px solid white;
+text-align: center;
 }
 
 #board TR TD.clicked {
-    background: #333333;
+background: #88b4b9;
 }
 
 #board TR TD.bombed {
-    background: red;
+background: red;
+}
+
+#score{
+    display: block;
+    text-align: center;
+    padding: 10%;
 }
 
