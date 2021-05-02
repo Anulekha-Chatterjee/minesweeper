@@ -1,10 +1,17 @@
 window.onload = function () {
     const board = document.getElementById('board');
+    let resetBtn = document.getElementById('reset');
     const noOfMines = 12;
     const noOfRows = 8;
     const noOfColumns = 8;
     let gameOver = false;
     let score = 0;
+
+    resetBtn.addEventListener('click', reset);
+    function reset()
+    {
+        init();
+    }
 
     function init() {
         board.innerHTML = "";
@@ -22,7 +29,7 @@ window.onload = function () {
     init();
 
     function plantBombs() {
-        for (let i = 0; i < noOfMines; i++) {
+        for (let i = 0; i <= noOfMines; i++) {
             let randomRow = getRandomRowOrColumn();
             let randomcolumn = getRandomRowOrColumn();
             var bombBlock = board.rows[randomRow].cells[randomcolumn];
