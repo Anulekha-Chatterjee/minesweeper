@@ -1,7 +1,7 @@
 window.onload = function () {
     const board = document.getElementById('board');
     let resetBtn = document.getElementById('reset');
-    const noOfMines = 12;
+    const noOfBombs = 12;
     const noOfRows = 8;
     const noOfColumns = 8;
     let gameOver = false;
@@ -11,10 +11,12 @@ window.onload = function () {
     function reset()
     {
         init();
+        displayScore();
     }
 
     function init() {
         board.innerHTML = "";
+        score = 0;
         for (let i = 0; i < noOfRows; i++) {
             row = board.insertRow(i);
             for (let j = 0; j < noOfColumns; j++) {
@@ -29,7 +31,7 @@ window.onload = function () {
     init();
 
     function plantBombs() {
-        for (let i = 0; i <= noOfMines; i++) {
+        for (let i = 0; i <= noOfBombs; i++) {
             let randomRow = getRandomRowOrColumn();
             let randomcolumn = getRandomRowOrColumn();
             var bombBlock = board.rows[randomRow].cells[randomcolumn];
@@ -70,7 +72,17 @@ window.onload = function () {
             }
         }
         displayScore();
+        declareWin();
     }
+
+function declareWin()
+{
+    if(score === ((noOfRows*noOfColumns)-noOfBombs))
+    {
+        alert("You've won the game");
+    }
+}
+
     function showAllBombs() {
         if (gameOver) {
             for (let i = 0; i < noOfRows; i++) {
@@ -82,6 +94,7 @@ window.onload = function () {
                 }
             }
         }
+
     }
 
     function displayScore()
