@@ -41,7 +41,6 @@ window.onload = function () {
 
 
     function clickBlock(block) {
-
         if (gameOver) {
             return;
         }
@@ -77,13 +76,14 @@ window.onload = function () {
             }
         }
         displayScore();
+        declareWinner();
     }
 
 
     function showAllBombs() {
         if (gameOver) {
             for (let i = 0; i < noOfRows; i++) {
-                for (j = 0; j < noOfRows; j++) {
+                for (j = 0; j < noOfColumns; j++) {
                     if (board.rows[i].cells[j].getAttribute("class") === "hasBomb") {
                         board.rows[i].cells[j].setAttribute('class', 'bombed')
                         board.rows[i].cells[j].innerHTML = "💣";
@@ -97,6 +97,23 @@ window.onload = function () {
     function displayScore() {
         document.getElementById('score').innerHTML = "Score: " + score;
     }
+
+    function declareWinner()
+    {
+        if(score === (noOfRows*noOfColumns)-noOfBombs)
+        {
+            for (let i = 0; i < noOfRows; i++) {
+                for (j = 0; j < noOfColumns; j++) {
+                    if (board.rows[i].cells[j].getAttribute("class") === "hasBomb") {
+                        board.rows[i].cells[j].setAttribute('class', 'bombed')
+                        board.rows[i].cells[j].innerHTML = "💣";
+                    }
+                }
+            }
+            alert("You've won");
+            }
+            
+        }
 
 
     function getRandomRowOrColumn() {
