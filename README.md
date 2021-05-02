@@ -2,8 +2,8 @@ This Minesweeper game consists of an m*n grid with x number of hidden mines plac
 
  
 1.If the cell has a mine underneath, the game is over.
-
 2. If the cell does not have a mine underneath, a number is displayed on the cell that denotes the number of mines in the adjacent cells.
+3. If No adjacent cell has bombs then recursively neighbouring cells are explored.
 
 This is the overall look of the game:
 
