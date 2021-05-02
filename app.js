@@ -29,24 +29,29 @@ window.onload = function () {
 
     function clickBlock(block) {
         if (block.innerHTML === 'X') {
-            alert('You lost')
+            alert('You lost');
         }
         else {
             var clickedRow = block.parentNode.rowIndex;
             var clickedColumn = block.cellIndex;
+            var bombs = 0;
             console.log (clickedRow, clickedColumn)
-            block.innerHTML = ((checkEdges(clickedRow, clickedColumn + 1).innerHTML === 'X') | 0)
-                + ((checkEdges(clickedRow - 1, clickedColumn + 1).innerHTML === 'X') | 0)
-                + ((checkEdges(clickedRow + 1, clickedColumn + 1).innerHTML === 'X') | 0)
-                + ((checkEdges(clickedRow, clickedColumn - 1).innerHTML === 'X') | 0)
-                + ((checkEdges(clickedRow - 1, clickedColumn - 1).innerHTML === 'X') | 0)
-                + ((checkEdges(clickedRow + 1, clickedColumn - 1).innerHTML === 'X') | 0)
-                + ((checkEdges(clickedRow - 1, clickedColumn).innerHTML === 'X') | 0)
-                + ((checkEdges(clickedRow + 1, clickedColumn).innerHTML === 'X') | 0);
-
-                if(block.innerHTML === '0')
+            for (var i=Math.max(clickedRow-1,0); i<=Math.min(clickedRow+1,7); i++) {
+                for(var j=Math.max(clickedColumn-1,0); j<=Math.min(clickedColumn+1,7); j++) {
+                  if (board.rows[i].cells[j].innerHTML==='X') bombs++;
+                }
+              }
+              block.innerHTML = bombs;
+                if(bombs === 0)
                 {
-            clickBlock(board.rows[clickedRow].cells[clickedColumn-1]);
+                    for (var i=Math.max(clickedRow-1,0); i<=Math.min(clickedRow+1,7); i++) {
+                        for(var j=Math.max(clickedColumn-1,0); j<=Math.min(clickedColumn+1,7); j++) {
+                          if (board.rows[i].cells[j].innerHTML=="") 
+                          {
+                              clickBlock(checkEdges(i,j));
+                          }
+                        }
+                      }
         }
 
        }
