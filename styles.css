@@ -1,13 +1,13 @@
-#content{
-    display: block;
+h1
+{
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    align-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 23%;
 }
 
+
 #board{
+    margin-left: auto;
+    margin-right: auto;
 height: 330px;
 width: 320px;
 display: flex;
@@ -16,7 +16,7 @@ background-color: gray;
 border-spacing: 0;
 }
 
-#board TR TD{
+#board tr td{
 height: 40px;
 width: 40px;
 padding: 0; 
@@ -25,17 +25,18 @@ border:1px solid white;
 text-align: center;
 }
 
-#board TR TD.clicked {
+#board tr td.clicked {
 background: #88b4b9;
 }
 
-#board TR TD.bombed {
+#board tr td.bombed {
 background: red;
 }
 
 #score{
     display: block;
+    padding-top: 5%;
     text-align: center;
-    padding: 10%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
